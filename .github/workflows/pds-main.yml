@@ -38,16 +38,13 @@ jobs:
         with:
           set-safe-directory: '*'
 
-      - run: npm ci
+      - run: npm ci && npm run build
         working-directory: 'lib/msal-common'
 
-      - run: npm ci
+      - run: npm ci && npm run build
         working-directory: 'lib/msal-node'
 
-      - run: npm run build
-        working-directory: 'lib/msal-node'
-
-      - run: cd lib/msal-node && npm run publish
+      - run: npm run publish
         working-directory: 'lib/msal-node'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
