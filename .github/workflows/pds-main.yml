@@ -40,7 +40,7 @@ jobs:
         with:
           node-version: 18
           registry-url: 'https://npm.pkg.github.com'
-          scope: '@PDMS-io'
+          scope: '@projectdata'
 
       - run: npm ci
         working-directory: 'lib/msal-common'
@@ -48,7 +48,7 @@ jobs:
       - run: npm ci
         working-directory: 'lib/msal-node'
 
-      - run: node ./gpr.js && cp ../../.npmrc .
+      - run: node ./gpr.js
         working-directory: 'lib/msal-node'
 
       - run: cp .npmrc lib/msal-node
