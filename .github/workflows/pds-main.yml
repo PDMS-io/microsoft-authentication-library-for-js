@@ -52,6 +52,7 @@ jobs:
         working-directory: 'lib/msal-node'
 
       - name: Publish
-        run: npm publish --access=restricted --workspace=@azure/msal-node
+        working-directory: 'lib/msal-node'
+        run: npm publish --access=restricted
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
