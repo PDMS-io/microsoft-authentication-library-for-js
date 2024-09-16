@@ -55,9 +55,13 @@ jobs:
 
       - run: cp .npmrc lib/msal-node
 
+      - name: Build common
+        working-directory: 'lib/msal-common'
+        run: npm run build
+
       - name: Build
         working-directory: 'lib/msal-node'
-        run: npm run prepack
+        run: npm run build
 
       - name: Publish
         working-directory: 'lib/msal-node'
