@@ -39,14 +39,19 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@azure'
 
-      - run: npm ci && npm run build
+      - run: npm ci
         working-directory: 'lib/msal-common'
 
-      - run: npm ci && npm run build
+      - run: npm ci
         working-directory: 'lib/msal-node'
 
-      - run: npm publish --access=restricted
-        working-directory: 'lib/msal-node'
+      - name: Build
+        run: npm run build --workspace=@azure/msal-common --workspace=@azure/msal-node
+
+      - name: Publish
+        run: npm publish --access=restricted --workspace=@azure/msal-node
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
