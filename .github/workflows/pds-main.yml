@@ -53,6 +53,10 @@ jobs:
 
       - run: cp .npmrc lib/msal-node
 
+      - name: Build
+        working-directory: 'lib/msal-node'
+        run: npm run prepack
+
       - name: Publish
         working-directory: 'lib/msal-node'
         run: npm publish --access=restricted
