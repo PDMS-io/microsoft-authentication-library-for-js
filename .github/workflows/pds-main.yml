@@ -39,14 +39,19 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@projectdata'
 
       - run: npm ci && npm run build
         working-directory: 'lib/msal-common'
 
       - run: npm ci && npm run build
         working-directory: 'lib/msal-node'
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@projectdata'
 
       - run: npm publish --access=restricted
         working-directory: 'lib/msal-node'
