@@ -7,24 +7,24 @@ on:
 
 jobs:
   build:
-    name: Update docker images
+    name: Build customized MSAL
     runs-on: ubuntu-latest
 
     steps:
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
-        with:
-          # this might remove tools that are actually needed,
-          # when set to "true" but frees about 6 GB
-          tool-cache: true
+      # - name: Free Disk Space (Ubuntu)
+      #   uses: jlumbroso/free-disk-space@main
+      #   with:
+      #     # this might remove tools that are actually needed,
+      #     # when set to "true" but frees about 6 GB
+      #     tool-cache: true
 
-          # all of these default to true, but feel free to set to
-          # "false" if necessary for your workflow
-          android: true
-          dotnet: false
-          haskell: true
-          large-packages: true
-          swap-storage: true
+      #     # all of these default to true, but feel free to set to
+      #     # "false" if necessary for your workflow
+      #     android: true
+      #     dotnet: false
+      #     haskell: true
+      #     large-packages: true
+      #     swap-storage: true
 
       - name: Setup Node
         uses: actions/setup-node@v4
