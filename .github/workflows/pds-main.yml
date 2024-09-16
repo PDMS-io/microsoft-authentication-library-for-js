@@ -42,13 +42,13 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           scope: '@projectdata'
 
-      - run: node ./gpr.js
-        working-directory: 'lib/msal-node'
-
       - run: npm ci
         working-directory: 'lib/msal-common'
 
       - run: npm ci
+        working-directory: 'lib/msal-node'
+
+      - run: node ./gpr.js
         working-directory: 'lib/msal-node'
 
       - name: Publish
