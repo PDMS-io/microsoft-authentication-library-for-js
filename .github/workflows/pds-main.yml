@@ -44,7 +44,7 @@ jobs:
       - run: npm ci && npm run build
         working-directory: 'lib/msal-node'
 
-      - run: npm run publish
+      - run: npm publish
         working-directory: 'lib/msal-node'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
