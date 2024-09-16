@@ -1,0 +1,47 @@
+name: PDS Package build
+
+on:
+  push:
+    branches:
+      - pds-main
+
+jobs:
+  up:
+    name: Update docker images
+    runs-on: ubuntu-latest
+
+    - name: Free Disk Space (Ubuntu)
+      uses: jlumbroso/free-disk-space@main
+      with:
+        # this might remove tools that are actually needed,
+        # when set to "true" but frees about 6 GB
+        tool-cache: true
+        
+        # all of these default to true, but feel free to set to
+        # "false" if necessary for your workflow
+        android: true
+        dotnet: false
+        haskell: true
+        large-packages: true
+        swap-storage: true
+      
+    steps:
+    - name: Setup Node
+      uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+    - name: Checkout the sourcecode
+      uses: actions/checkout@v4
+      with:
+          set-safe-directory: '*'
+
+    - run: cd lib/msal-common && npm install
+
+    - run: cd lib/msal-node && npm install
+
+    - run: cd lib/msal-node && npm run build
+
+
+
+    
