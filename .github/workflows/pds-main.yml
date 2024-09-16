@@ -51,6 +51,8 @@ jobs:
       - run: node ./gpr.js && cp ../../.npmrc .
         working-directory: 'lib/msal-node'
 
+      - run: cp .npmrc lib/msal-node
+
       - name: Publish
         working-directory: 'lib/msal-node'
         run: npm publish --access=restricted
