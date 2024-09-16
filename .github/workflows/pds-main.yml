@@ -40,7 +40,6 @@ jobs:
         with:
           node-version: 18
           registry-url: 'https://npm.pkg.github.com'
-          scope: '@azure'
 
       - run: npm ci
         working-directory: 'lib/msal-common'
