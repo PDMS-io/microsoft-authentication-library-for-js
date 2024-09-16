@@ -50,6 +50,8 @@ jobs:
 
       - run: node ./gpr.js
         working-directory: 'lib/msal-node'
+        env:
+          GITHUB_RUN_NUMBER: ${{ github.run_number }}
 
       - run: cp .npmrc lib/msal-node
 
